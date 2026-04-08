@@ -1,5 +1,8 @@
 # docs-tech-ol
 
+[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-support-yellow?style=flat-square&logo=buy-me-a-coffee)](https://buymeacoffee.com/bowang168)
+[![Sponsor](https://img.shields.io/badge/GitHub%20Sponsors-sponsor-ea4aaa?style=flat-square&logo=github-sponsors)](https://github.com/sponsors/bowang168)
+
 Oracle Linux technical knowledge base with Qdrant hybrid search (dense semantic + BM25 keyword RRF fusion).
 
 **Portable**: all docs and scripts live inside the repo — clone, install dependencies, build the index, and search.
