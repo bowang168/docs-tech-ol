@@ -1,0 +1,19 @@
+# Qdrant local database
+qdrant_local_db/
+
+# Ingest caches
+.tech_hash_cache.json
+.tech_bm25_model.json
+
+# Fetch log
+00_System/.fetch_log.json
+
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+
+# Claude Code
+.claude/
