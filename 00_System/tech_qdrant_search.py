@@ -50,8 +50,7 @@ def get_client() -> QdrantClient:
 
 def load_bm25():
     """Load BM25 tokenizer from saved model."""
-    bm25_module_path = os.path.expanduser("~/d/Personal_AI_Brain/00_System")
-    sys.path.insert(0, bm25_module_path)
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
     from bm25_tokenizer import BM25Tokenizer
 
     model_path = os.path.join(str(BASE_DIR), BM25_MODEL_FILE)

@@ -599,9 +599,8 @@ def main():
     bm25 = None
     if not args.dry_run:
         print("[BM25] Building BM25 model from corpus...")
-        # Import from Personal_AI_Brain's shared module
-        bm25_module_path = os.path.expanduser("~/d/Personal_AI_Brain/00_System")
-        sys.path.insert(0, bm25_module_path)
+        # Import from local copy
+        sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
         from bm25_tokenizer import BM25Tokenizer
 
         all_texts = []

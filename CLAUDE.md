@@ -4,13 +4,27 @@
 
 This is an Oracle Linux technical knowledge base with Qdrant hybrid search. When answering questions about Oracle Linux, UEK, Ksplice, or related topics, search the local knowledge base first.
 
+## Directory Structure
+
+```
+00_System/           — scripts: ingest, search, fetch, BM25 tokenizer
+01_Markdown/oracle/  — source docs by OL version (ol8/, ol9/, ol10/)
+qdrant_local_db/     — embedded Qdrant storage (gitignored)
+```
+
 ## Architecture
 
 - **Qdrant Local Mode** — embedded database in `qdrant_local_db/`, no Docker, no network ports
 - **Embedding** — Ollama `qwen3-embedding:0.6b` (1024-dim)
-- **BM25** — jieba Chinese/English tokenizer for keyword matching
+- **BM25** — `bm25_tokenizer.py` (local copy, jieba Chinese/English tokenizer)
 - **Search** — hybrid mode (dense + BM25 via RRF fusion) by default
 - **Portable** — clone, install dependencies, `--rebuild`, and search
+
+## Prerequisites
+
+- Python 3.10+, `pip install qdrant-client requests jieba`
+- **Ollama must be running** before search or ingest (`ollama serve`)
+- Model pulled: `ollama pull qwen3-embedding:0.6b`
 
 ## Search Commands
 
@@ -52,6 +66,13 @@ python3 00_System/tech_qdrant_search.py --stats
 | `topic` | security, networking, storage, patching, etc. | Technical subject |
 | `source` | oracle | Content origin |
 | `type` | oracle-doc, pdf-converted, index | Document type |
+
+## Fetching Upstream Docs
+
+```bash
+# Download/update Oracle Linux docs → 01_Markdown/
+python3 00_System/fetch_oracle_docs.py
+```
 
 ## Ingestion
 
