@@ -19,8 +19,12 @@ Created: 2026-04-04
 
 import math
 import re
+import warnings
 from collections import Counter
 from typing import Optional
+
+# Silence transient pkg_resources deprecation; jieba's _compat.py falls back to open() once pkg_resources is gone.
+warnings.filterwarnings("ignore", message=".*pkg_resources is deprecated.*", category=UserWarning)
 
 import jieba
 from qdrant_client.models import SparseVector
