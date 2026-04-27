@@ -20,6 +20,22 @@ qdrant_local_db/     — embedded Qdrant storage (gitignored)
 - **Search** — hybrid mode (dense + BM25 via RRF fusion) by default
 - **Portable** — clone, install dependencies, `--rebuild`, and search
 
+## Claude Code Integration
+
+This knowledge base is wrapped by the `/techdb` skill (`~/.claude/skills/techdb/SKILL.md`). Cascade:
+
+1. **Qdrant local** (this repo) — covers OL7/8/9/10
+2. **Context7 MCP** — fallback for OL10/RHEL10/OCI latest docs (**opt-in**)
+3. **WebSearch + WebFetch** — last resort
+
+**Context7 launch requirement**: Context7 only loads when Claude Code is started via the `claude-techdb` alias (defined in `~/.shell_common`):
+
+```bash
+alias claude-techdb='claude --mcp-config ~/.claude/mcp-techdb.json'
+```
+
+The MCP config file `~/.claude/mcp-techdb.json` declares the `@upstash/context7-mcp` server. Default `claude` does NOT load Context7 — `/techdb` cascade falls through directly to WebSearch in that case. Use `claude-techdb` whenever you expect to query OL10 / RHEL10 / OCI latest docs.
+
 ## Prerequisites
 
 - Python 3.10+, `pip install qdrant-client requests jieba`

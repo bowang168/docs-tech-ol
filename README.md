@@ -158,6 +158,12 @@ python3 00_System/tech_qdrant_ingest.py --rebuild
 | `tech_qdrant_search.py --stats` | View index statistics |
 | `tech_qdrant_search.py --filters` | View available filter values |
 
+## Claude Code Integration
+
+This knowledge base is wrapped by the `/techdb` skill in Claude Code, which adds a fallback cascade: **Qdrant (this repo) → Context7 MCP → WebSearch**.
+
+Context7 is opt-in by launcher — start Claude Code via the `claude-techdb` alias (`claude --mcp-config ~/.claude/mcp-techdb.json`) when you want it active. See [`CLAUDE.md`](./CLAUDE.md#claude-code-integration) for full details.
+
 ## License
 
 The scripts in this repo are provided as-is. Oracle Linux documentation content is sourced from [Oracle's public documentation](https://docs.oracle.com/en/operating-systems/oracle-linux/) and is subject to Oracle's terms of use.
